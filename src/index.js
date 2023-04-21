@@ -1,7 +1,3 @@
-import { answer } from './answer';
-function render() {
-  document.getElementById(
-    'root'
-  ).innerHTML = `The answer to the universe is ${answer}.`;
-}
-render();
+import * as dnd from 'react-dnd'
+
+console.log(dnd)

@@ -17,6 +17,15 @@ const config = {
   entry: {
     main: "./src/index.js",
   },
+  externals: ["react"],
+  externalsType: "amd",
+  ...(isRunningRspack ? {
+    builtins: {
+      react: {
+        runtime: "automatic",
+      },
+    },
+  }: {}),
   module: {
     rules: [
       {
@@ -27,10 +36,11 @@ const config = {
     ],
   },
   output: {
+    clean: true,
     path: isRunningWebpack
       ? path.resolve(__dirname, "webpack-dist")
       : path.resolve(__dirname, "rspack-dist"),
-    filename: "main.js",
+    filename: "[name]/[name].js",
   },
   resolve: {
     alias: {
